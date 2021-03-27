@@ -7,10 +7,7 @@ function App() {
       <header>
       <nav class="navbar navbar-light bg-light"/>
           <h2>Las ofertas de la semana</h2>
-     </>;
-}
-
-      </header>
+    </header>
     </div>
   );
 }
