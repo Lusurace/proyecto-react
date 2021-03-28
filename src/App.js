@@ -1,15 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-function App() {
+import NavBarC from "./components/NavBarC";
+import ItemListContainer from "./components/ItemsListContainer/ItemListContainer";
+import ItemDetailContainer from "./components/ItemDetailContainer";
+
+import CartState from "./context/CartState";
+
+export default function App() {
   return (
-    <div>
-      <header>
-      <nav class="navbar navbar-light bg-light"/>
-          <h2>Las ofertas de la semana</h2>
-    </header>
-    </div>
+    <>
+      <Router>
+        <CartState>
+          <NavBarC />;
+          <Switch>
+            <Route exact path="/">
+              <ItemListContainer geeating={"Hola soy ItemlistContainer"} />
+            </Route>
+            <Route exact component={ItemDetailContainer} path="/product/:id" />
+            <Route
+              exact
+              component={ItemListContainer}
+              path="/category/:categoryId"
+            />
+          </Switch>
+        </CartState>
+      </Router>
+    </>
   );
 }
 
-export default App;
